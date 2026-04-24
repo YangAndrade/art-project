@@ -32,14 +32,14 @@ Assets/
 
 Cada quadro (`Rectangle22` → `Rectangle33`) dentro de `3d_lounge_01_FBX → pictures` possui:
 
-| Componente | Função |
-|---|---|
-| `Box Collider` | Detecta raycast |
-| `Painting (Script)` | Armazena dados da obra |
-| `Rigidbody (Kinematic)` | Necessário para interação XR |
-| `Ray Interactable` | Componente de interação Meta XR |
-| `Interactable Unity Event Wrapper` | Dispara evento `When Select` |
-| `PaintingInteractable (Script)` | Chama `GalleryUI.MostrarInfo()` |
+| Componente                         | Função                          |
+| ---------------------------------- | ------------------------------- |
+| `Box Collider`                     | Detecta raycast                 |
+| `Painting (Script)`                | Armazena dados da obra          |
+| `Rigidbody (Kinematic)`            | Necessário para interação XR    |
+| `Ray Interactable`                 | Componente de interação Meta XR |
+| `Interactable Unity Event Wrapper` | Dispara evento `When Select`    |
+| `PaintingInteractable (Script)`    | Chama `GalleryUI.MostrarInfo()` |
 
 ---
 
@@ -69,13 +69,13 @@ SampleScene
 
 ## ⚙️ Configuração do Canvas (World Space)
 
-| Propriedade | Valor |
-|---|---|
-| Render Mode | World Space |
-| Parent | CenterEyeAnchor |
-| Local Position | (0, 0, 1.5) |
-| Local Rotation | (0, 0, 0) |
-| Scale | (0.002, 0.002, 0.002) |
+| Propriedade    | Valor                 |
+| -------------- | --------------------- |
+| Render Mode    | World Space           |
+| Parent         | CenterEyeAnchor       |
+| Local Position | (0, 0, 1.5)           |
+| Local Rotation | (0, 0, 0)             |
+| Scale          | (0.002, 0.002, 0.002) |
 
 > **Importante:** Após realocar o Canvas dentro do CenterEyeAnchor, sempre verifique se a Scale não foi distorcida pelo Unity. Ajuste manualmente se necessário.
 
@@ -84,16 +84,18 @@ SampleScene
 ## 🕹️ Controles
 
 ### No Meta Quest (dispositivo físico)
-| Ação | Controle |
-|---|---|
-| Apontar para quadro | Ray do controle direito |
-| Abrir informações | Gatilho direito |
-| Fechar painel | Gatilho direito (novamente) |
+
+| Ação                | Controle                    |
+| ------------------- | --------------------------- |
+| Apontar para quadro | Ray do controle direito     |
+| Abrir informações   | Gatilho direito             |
+| Fechar painel       | Gatilho direito (novamente) |
 
 ### No Meta XR Simulator
-| Ação | Controle |
-|---|---|
-| Movimentar câmera | Mouse |
+
+| Ação                  | Controle                                  |
+| --------------------- | ----------------------------------------- |
+| Movimentar câmera     | Mouse                                     |
 | Abrir / fechar painel | Tecla `T` (trigger simulado via OVRInput) |
 
 ---
@@ -101,18 +103,23 @@ SampleScene
 ## 📜 Scripts — Resumo
 
 ### `Painting.cs`
+
 Componente de dados puro. Armazena `titulo`, `artista` e `descricao` de cada obra. Configurado diretamente no Inspector.
 
 ### `PaintingInteractable.cs`
+
 Busca o `GalleryUI` na cena e chama `MostrarInfo()` quando o método `Selecionar()` é invocado pelo sistema de interação XR.
 
 ### `GalleryUI.cs`
+
 Gerencia a visibilidade do painel. Expõe `MostrarInfo(Painting p)`, `Fechar()` e `PainelAberto()`.
 
 ### `SimulatorInput.cs`
+
 Usa `OVRInput.GetDown` para detectar o gatilho no simulador. Se o painel estiver aberto, fecha. Caso contrário, faz raycast a partir da câmera e tenta selecionar um quadro.
 
 ### `InteractorConnector.cs`
+
 Encontra automaticamente todos os `RayInteractor` e `RayInteractable` na cena e registra os logs de conexão para diagnóstico.
 
 ---
@@ -120,12 +127,14 @@ Encontra automaticamente todos os `RayInteractor` e `RayInteractable` na cena e 
 ## 🚀 Como Rodar
 
 ### No Editor (Meta XR Simulator)
+
 1. Abra a cena `SampleScene`
 2. Pressione **Play**
 3. O Meta XR Simulator abrirá automaticamente
 4. Aponte para um quadro e pressione **T** para interagir
 
 ### No Meta Quest
+
 1. Configure o projeto para **Android** em `File → Build Settings`
 2. Conecte o headset via cabo USB com modo desenvolvedor ativo
 3. Clique em **Build and Run**
