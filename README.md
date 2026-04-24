@@ -151,22 +151,6 @@ Encontra automaticamente todos os `RayInteractor` e `RayInteractable` na cena e 
 
 ---
 
-## 🐛 Problemas Conhecidos e Soluções
-
-**Painel não aparece no Simulator**
-→ Verifique se o Canvas está como filho do `CenterEyeAnchor` e com Scale `(0.002, 0.002, 0.002)`.
-
-**Scale do Canvas fica distorcida ao reparentar**
-→ Ao arrastar o Canvas para dentro do CenterEyeAnchor, ajuste a Scale manualmente para `(0.002, 0.002, 0.002)`.
-
-**Tecla T não funciona**
-→ O projeto usa o **novo Input System**. O `SimulatorInput.cs` usa `OVRInput` que bypassa esse sistema corretamente.
-
-**Simulador piscando**
-→ Manter o Canvas em **World Space** como filho do CenterEyeAnchor resolve o conflito de renderização.
-
----
-
 ## 👨‍💻 Desenvolvido por
 
 **Yang Andrade**
